@@ -1,0 +1,112 @@
+
+:root
+{
+    --border-color: white;
+    --bar-color: white;
+    --background-color: black;
+    interpolate-size: allow-keywords; /* Opt-in the document to animate keyword sizes globally */
+}
+
+
+/* Hamburger Menu */
+.ham-menu
+{
+    border: 2px solid var(--border-color);
+    height: 0px;
+    display: none; /* Hide the checkbox and hamburger button on desktop */
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    aspect-ratio: 1/1;
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+
+
+/* Bars */
+.ham-menu span
+{
+    height: 5px;
+    width: 70%;
+    background-color: var(--bar-color);
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+}
+
+.ham-menu span:nth-child(1)
+{
+    top: 25%
+}
+
+.ham-menu span:nth-child(3)
+{
+    top: 75%
+}
+
+.ham-menu.active span:nth-child(1)
+{
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ham-menu.ham-menu.active span:nth-child(2)
+{
+    opacity: 0;
+}
+
+.ham-menu.active span:nth-child(3)
+{
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+
+/* Drop down Menu */
+.off-screen-menu
+{
+    background-color:  var(--background-color);
+    overflow: hidden;
+    font-size: 18pt;
+    width: 100%; height: auto;
+    max-height: 0px; 
+    transition: max-height 500ms  ease;
+}
+
+.off-screen-menu ul
+{
+    list-style-type: none;  /* Removes default bullet points */
+    padding: 0;             /* Removes default left padding */
+    margin: 0;              /* Removes default margin */
+}
+
+.off-screen-menu li
+{
+    display: flex; /* allows to change justify and align */
+    justify-content: center;
+    align-items: center;
+    width: 100%;  height: 60px;
+}
+
+.off-screen-menu.active
+{
+    max-height: 400px; /* Hack to make animation work */
+}
+
+
+
+/* Mobile Responsive Styles (Breakpoint:  576px) */
+@media (max-width: 576px)
+{
+    /*show on mobile */
+    .ham-menu
+    {
+        display: flex;
+        height: 50px;
+        margin-left: auto; 
+    }
+}
